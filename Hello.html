@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="hellocat.webp" type="image/x-icon">
+    <title>HelloCat - Fun for Everyone!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffebcd;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate {
+            animation: slideInLeft 2s ease forwards; /* Animation applied */
+        }
+    
+
+        header {
+            background-color: #ffcccb;
+            color: white;
+            text-align: center;
+            padding: 1px 1px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px #ff69b4;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffb6c1;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        nav a:hover {
+            transform: scale(1.2);
+        }
+
+        .hero {
+            background-image: url('bkgr.jpg');
+            background-size: cover; /* This makes the background image cover the entire element */
+            background-position: center; /* This centers the image */
+            background-repeat: no-repeat; /* This prevents the image from repeating */
+            text-align: center;
+            padding: 110px 20px;
+            position: relative;
+        }
+
+        .hero img {
+            max-width: 200px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #ff1493;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #ff1493;
+            margin-bottom: 20px;
+        }
+        .h2-1{
+            font-size: 2rem;
+            color: white;
+            text-align: center;
+            padding: 1px 1px;
+            margin: 0;
+            text-shadow: 2px 2px #ff69b4;
+        }
+        .p1{
+            color: white;
+        }
+            
+        .button {
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #ff1493;
+            transform: scale(1.1);
+        }
+        .fun-section2 {
+            
+            padding: 40px 20px;
+            border-top: 5px solid #ff69b4;
+        }
+        .fun-section2-1 {
+            background-image: url('bkgr3.png');
+            background-size: cover; /* This makes the background image cover the entire element */
+            background-position: center; /* This centers the image */
+            background-repeat: no-repeat; /* This prevents the image from repeating */
+            padding-bottom: 100px;
+            padding-top: 100px;
+            border-top: 5px solid #ff69b4;
+        }
+        .fun-section2-2 {
+            background-image: url('b5.jpg');
+            background-size: cover; /* This makes the background image cover the entire element */
+            background-position: bottom; /* This centers the image */
+            background-repeat: no-repeat; /* This prevents the image from repeating */
+            padding-bottom: 170px;
+            border-top: 5px solid #ff69b4;
+        }
+        .fun-section2-3 {
+            background-image: url('tokenomic.png');
+            background-size: cover; /* This makes the background image cover the entire element */
+            background-position: center; /* This centers the image */
+            background-repeat: no-repeat; /* This prevents the image from repeating */
+            border-top: 5px solid #ff69b4;
+        }
+        .fun-section {
+            background-image: url('bkgr5.png');
+            background-size: cover; /* This makes the background image cover the entire element */
+            background-position: center; /* This centers the image */
+            background-repeat: no-repeat; /* This prevents the image from repeating */
+            padding-bottom: 100px;
+            padding-top: 100px;
+            border-top: 5px solid #ff69b4;
+        }
+
+        footer {
+            background-color: #ffcccb;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+    </style>
+    <script>
+        document.addEventListener('scroll', function() {
+            const aboutSection = document.getElementById('about1');
+            const sectionPosition = aboutSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight; // Trigger when 80% of the section is visible
+    
+            if (sectionPosition < screenPosition && sectionPosition + aboutSection.offsetHeight > 0) {
+            aboutSection.classList.add('animate');
+        }
+        });
+        document.addEventListener('scroll', function() {
+            const aboutSection = document.getElementById('buy1');
+            const sectionPosition = aboutSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight ; // Trigger when 80% of the section is visible
+    
+            if (sectionPosition < screenPosition && sectionPosition + aboutSection.offsetHeight > 0) {
+            aboutSection.classList.add('animate');
+        }
+        });
+        document.addEventListener('scroll', function() {
+            const aboutSection = document.getElementById('game1');
+            const sectionPosition = aboutSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight ; // Trigger when 80% of the section is visible
+    
+            if (sectionPosition < screenPosition && sectionPosition + aboutSection.offsetHeight > 0) {
+            aboutSection.classList.add('animate');
+        }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to HelloCat!</h1>
+        <p>Your new favorite fun-filled crypto adventure!</p>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#buy">How to Buy</a>
+        <a href="#games">Games</a>
+        <a href="#Tokenomics">Tokenomics</a>
+        <a href="#community">Community</a>
+        
+    </nav>
+    <div class="hero">
+        <img src="hellocat.webp" alt="Hellocat Mascot">
+        <h1>Let’s Make Crypto Fun!</h1>
+        <p>Join the purr-tastic world of Hellocat!</p>
+        <a class="button" href="#buy">Get Started Now</a>
+    </div>
+    <section class="fun-section2-1" id="about">
+        <h2 class="h2-1">About Hellocat</h2>
+        <h4 class="p1" id="about1"><br>Hellocat is all about combining fun, creativity, and crypto! With our cute and quirky mascot leading the charge,
+        <br>we’re building a community filled with smiles and purrs.
+        <br> The platform shares hilarious and cute cat videos, memes, and content, all while encouraging people to join in the fun of cryptocurrency.
+        <br> It's a place where meme lovers and cat enthusiasts come together to laugh, invest, and support each other.
+        <br>Whether you're here for the cat videos or the chance to get involved in the crypto space,
+        <br>Hellocat promises to bring a smile to your face and a few tokens to your wallet.
+        <br> Join the movement, and let the cats (and memes) rule the blockchain! 😺💰</h4>
+    </section>
+    <section class="fun-section2-2" id="buy">
+        <h2 class="h2-1">How to Buy Hellocat Coins</h2>
+        <h3 class="p1" id="buy1">It’s easy to get started! just in 3 simple steps:<br>
+        <br>Step1: Buy some Solana $SOL (<a href="https://www.binance.com/en/price/solana">Binance</a> ,<a href="https://www.coinbase.com/en-gb/converter/SOL/USD">Coinbase</a> ... )<br>
+        <br>Step2: Connect your wallet to Any Swap platform, choose your amount.<br>
+        <br>Step3: Swap to $HLCT: and let the fun begin!<br>
+        </h3>
+        <a class="button" href="#buy">Buy Hellocat Now</a>
+    </section>
+    <section class="fun-section" id="games">
+        <h2 class="h2-1">Play With Hellocat</h2>
+        <p class="p1" id="game1">Explore fun games, Play with Hellocat in our games for token holders where you can test your luck and earn rewards by placing bets .
+        <br> It’s a playful way to enjoy crypto, have fun, and potentially earn some money—just let the cats bring you good fortune! 😸🎰💰</p>
+        <a class="button" href="game.html">Let’s Play!</a>
+    </section>
+    <section class="fun-section2-3" id="Tokenomics">
+        <h2>Tokenomics</h2>
+        <h3>Total Supply:<br>10.000.000.000</h3>
+        <h3>Current Supply:<br>9.000.000.000</h3>
+        <h3>Games:<br>900.000.000</h3>
+        <h3>Dev:<br>100.000.000</h3>
+    </section>
+    <section class="fun-section2" id="community">
+        <h2>Join Our Community</h2>
+        <p>Connect with fellow Hellocat enthusiasts, share your creations, and grow the family!</p>
+        <a class="button" href="#community" img>Telegram</a>
+        <a class="button" href="#community">X</a>
+        <a class="button" href="#community">Instagram</a>
+
+    </section>
+    <footer>
+        <p>&copy; 2024 Hellocat. All Rights Reserved. Built with ❤️ and laughter!</p>
+    </footer>
+</body>
+</html>
